@@ -1,0 +1,46 @@
+global:
+  logLevel: info
+  splunk:
+    hec:
+      host: xxx.splunkcloud.com
+      port: 8088
+      token: xxxxx
+      protocol: https
+      insecureSSL: true
+  kubernetes:
+    clusterName: xxx
+  prometheus_enabled: false
+  monitoring_agent_enabled: false
+splunk-kubernetes-logging:
+  enabled: true
+  fluentd:
+    path: /var/log/containers/*.log
+  containers:
+    path: /var/log
+    pathDest: /var/lib/docker/containers
+    logFormatType: cri
+  K8sMetadata:
+     podLabels:
+     - app
+     - k8s-app
+     - release
+  splunk:
+    hec:
+     indexName: logs
+  journalLogPath: /run/log/journal   
+splunk-kubernetes-objects:
+  enabled: true
+  splunk:
+    hec:
+     indexName: objects
+splunk-kubernetes-metrics:
+  enabled: true
+  splunk:
+    hec:
+     indexName: metrics
+  kubernetes:
+    useRestClientSSL: true
+    insecureSSL: true
+  metricsInterval: 60s       
+
+
