@@ -26,18 +26,18 @@ splunk-kubernetes-logging:
      - release
   splunk:
     hec:
-     indexName: logs
+     indexName: aks-logs
   journalLogPath: /run/log/journal   
 splunk-kubernetes-objects:
   enabled: true
   splunk:
     hec:
-     indexName: objects
+     indexName: aks-objects
 splunk-kubernetes-metrics:
   enabled: true
   splunk:
     hec:
-     indexName: metrics
+     indexName: aks-metrics
   kubernetes:
     useRestClientSSL: true
     insecureSSL: true
